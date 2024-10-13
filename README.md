@@ -65,6 +65,79 @@ This project is a dynamic question assignment dashboard built with NestJS for th
 
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+High-Level System Architecture for a Scalable Application
+
+To design a scalable social application capable of handling 100,000 daily active users (DAU) and scaling to support millions of global users, we need to consider several key components and best practices. Below is a high-level system architecture diagram along with an explanation of each component tailored for a mobile-centric application.
+
++-------------------+          +-------------------+
+|   Mobile Clients   | <------> |   API Gateway     |
++-------------------+          +-------------------+
+                                      |
+                                      v
+                             +-------------------+
+                             |   Load Balancer   |
+                             +-------------------+
+                                      |
+                                      v
+                             +-------------------+
+                             |   Microservices    |
+                             | (User, Match, Chat,|
+                             |  Notification, etc.)|
+                             +-------------------+
+                                      |
+                                      v
+                             +-------------------+
+                             |   Message Queue    |
+                             | (RabbitMQ, Kafka) |
+                             +-------------------+
+                                      |
+                                      v
++-------------------+          +-------------------+
+|   Relational DB   |          |   NoSQL DB        |
+| (PostgreSQL)      |          | (MongoDB)         |
++-------------------+          +-------------------+
+                                      |
+                                      v
+                             +-------------------+
+                             |   Caching Layer    |
+                             |      (Redis)      |
+                             +-------------------+
+                                      |
+                                      v
+                             +-------------------+
+                             |   Monitoring &    |
+                             |      Logging       |
+                             +-------------------+
+                                      |
+                                      v
+                             +-------------------+
+                             |   Content Delivery |
+                             |      Network       |
+                             +-------------------+
+                                      |
+                                      v
+                             +-------------------+
+                             |   Global          |
+                             |   Distribution    |
+                             +-------------------+
+
+
+## Architecture Diagram
+
+```mermaid
+graph TD
+    A[Mobile Clients] -->|API Requests| B[CDN / Load Balancer]
+    B --> C[API Gateway]
+    C --> D[Authentication Service]
+    C --> E[User Profile Service]
+    C --> F[Matching Service]
+    C --> G[Messaging Service]
+    C --> H[Notification Service]
+    D & E & F & G & H -->|Read/Write| I[Database Cluster]
+    D & E & F & G & H -->|Cache| J[Caching Layer]
+    D & E & F & G & H -->|Async Tasks| K[Message Queue]
+    K --> L[Background Workers]
+    M[Admin Dashboard] --> C
+    N[Analytics Service] --> C
+    O[Monitoring & Logging] --> C & D & E & F & G & H & I & J & K & L
