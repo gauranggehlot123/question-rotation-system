@@ -87,7 +87,7 @@ graph TD
     M[Admin Dashboard] --> C
     N[Analytics Service] --> C
     O[Monitoring & Logging] --> C & D & E & F & G & H & I & J & K & L
-
+```
 
 
 ## Simplified Architecture Diagram
@@ -103,7 +103,7 @@ graph TD
     I[Third-Party Services] --> D
     J[Admin Dashboard] --> B
     K[CDN] --> A
-
+```
 ## Key Components
 
 ### 1. Mobile Clients
