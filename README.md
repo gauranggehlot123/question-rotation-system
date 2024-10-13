@@ -89,6 +89,7 @@ graph TD
     O[Monitoring & Logging] --> C & D & E & F & G & H & I & J & K & L
 
 
+## Simplified Architecture Diagram
 
 graph TD
     A[Mobile App] --> B[API Gateway]
