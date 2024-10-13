@@ -91,6 +91,7 @@ graph TD
 
 
 ## Simplified Architecture Diagram
+```mermaid
 graph TD
     A[Mobile App] --> B[API Gateway]
     B --> C[Load Balancer]
