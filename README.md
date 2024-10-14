@@ -32,6 +32,20 @@ This project is a dynamic question assignment dashboard built with NestJS for th
 
 4. Set up your environment variables. Create a `.env` file in the backend directory and configure your MongoDB connection string and other necessary variables.
 
+5. **Run MongoDB using Docker**:
+   To set up a MongoDB instance, you can use Docker. Run the following command:
+   ```bash
+   docker-compose up -d
+   ```
+   After executing `docker-compose up -d`, you will have a running MongoDB instance accessible at `localhost:27017` on your host machine, with the ability to persist data through the `mongodb_data` volume. You can connect to MongoDB using a client (like MongoDB Compass or a shell) with the specified credentials (root / example_password).
+
+6. **Seed Initial Data**:
+   To populate the database with initial data, you can run the seed script. Navigate to the backend directory and execute:
+   ```bash
+   ts-node src/scripts/seed.ts
+   ```
+   This script will check if there are existing questions in the database and, if not, will insert sample questions for different regions.
+
 ## Usage
 
 1. Start the backend server:
