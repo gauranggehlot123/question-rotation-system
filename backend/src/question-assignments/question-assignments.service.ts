@@ -107,6 +107,8 @@ export class QuestionAssignmentsService {
   async findQuestionsByRegion(region: string): Promise<Question[]> {
     return this.questionModel.find({ region }).exec();
   }
+
+  // Update the current assigned questions
   async updateCurrentAssignment(region: string): Promise<void> {
     await this.questionAssignmentModel.updateMany(
       { region, isActive: true },
@@ -142,6 +144,7 @@ export class QuestionAssignmentsService {
     }
   }
 
+  // Get Currenrt Question Assignments Specific to the regions
   async getCurrentAssignments(): Promise<
     Array<QuestionAssignment & { question: Question }>
   > {
@@ -238,6 +241,7 @@ export class QuestionAssignmentsService {
     return finalAssignments;
   }
 
+  // Get Upcoming Question Assignments Specific to the regions as per their start date
   async getUpcomingAssignments(): Promise<
     Array<QuestionAssignment & { question: Question }>
   > {

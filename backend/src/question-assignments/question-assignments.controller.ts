@@ -25,6 +25,7 @@ export class QuestionAssignmentsController {
     return this.questionAssignmentsService.findAllWithQuestions();
   }
 
+  // Create a new Question with Assignment
   @Post('create')
   async createQuestionWithAssignment(
     @Body() createQuestionDto: { content: string; region: string; duration: number; }
